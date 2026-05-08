@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>JP Comforts Hotel – Nairobi</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --sand: #E8DCC8;
+    --warm-brown: #8B6914;
+    --deep-brown: #4A3000;
+    --terracotta: #C4621D;
+    --dark-text: #2C1F00;
+    --muted-text: #6B5533;
+    --white: #FFFDF9;
+  }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--cream);
+    color: var(--dark-text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(74, 48, 0, 0.92);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--sand);
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
+  }
+  .nav-logo span { color: #E8A94A; }
+  .nav-cta {
+    background: var(--terracotta);
+    color: var(--white);
+    border: none;
+    padding: 0.55rem 1.4rem;
+    border-radius: 2px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: #A0511A; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background:
+      linear-gradient(to bottom, rgba(30,15,0,0.55) 0%, rgba(30,15,0,0.3) 60%, rgba(74,48,0,0.7) 100%),
+      url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1400&q=80') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 5rem;
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #E8A94A;
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: #E8C97A;
+  }
+  .hero-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #D4C4A8;
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.04em;
+  }
+  .hero-location {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #C4A870;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    margin-bottom: 2.5rem;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+  .btn-primary {
+    background: var(--terracotta);
+    color: #fff;
+    padding: 1rem 2.2rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    font-family: 'Lato', sans-serif;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: #A0511A; transform: translateY(-2px); }
+  .btn-outline {
+    border: 1px solid rgba(232,201,122,0.6);
+    color: #E8C97A;
+    padding: 1rem 2.2rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    font-family: 'Lato', sans-serif;
+    transition: background 0.15s;
+  }
+  .btn-outline:hover { background: rgba(232,201,122,0.1); }
+
+  /* STRIP */
+  .strip {
+    background: var(--deep-brown);
+    padding: 1.1rem 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+  .strip-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--sand);
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .strip-item svg { color: #E8A94A; flex-shrink: 0; }
+
+  /* ABOUT */
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    max-width: 1100px;
+    margin: 5rem auto;
+    padding: 0 2rem;
+    align-items: center;
+    gap: 4rem;
+  }
+  .about-img {
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+  .about-img img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+    border-radius: 2px;
+  }
+  .about-img::before {
+    content: '';
+    position: absolute;
+    top: -12px; left: -12px;
+    right: 12px; bottom: 12px;
+    border: 2px solid var(--warm-brown);
+    border-radius: 2px;
+    z-index: -1;
+  }
+  .about-text .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+  }
+  .about-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--deep-brown);
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+  }
+  .about-text p {
+    font-size: 0.97rem;
+    line-height: 1.8;
+    color: var(--muted-text);
+    margin-bottom: 1rem;
+  }
+  .star-row {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 1.2rem;
+  }
+  .star-row span { color: #C4821D; font-size: 1.1rem; }
+
+  /* AMENITIES */
+  .amenities {
+    background: var(--deep-brown);
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+  .amenities .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #E8A94A;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+  }
+  .amenities h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--sand);
+    margin-bottom: 3rem;
+  }
+  .amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .amenity-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(232,201,122,0.15);
+    border-radius: 2px;
+    padding: 1.8rem 1.2rem;
+    transition: background 0.2s;
+  }
+  .amenity-card:hover { background: rgba(255,255,255,0.09); }
+  .amenity-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+  .amenity-card p {
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--sand);
+    font-weight: 700;
+  }
+
+  /* LOCATION */
+  .location {
+    max-width: 1000px;
+    margin: 5rem auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .location .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+  }
+  .location h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--deep-brown);
+    margin-bottom: 1.5rem;
+  }
+  .nearby-list { list-style: none; }
+  .nearby-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--sand);
+    font-size: 0.9rem;
+    color: var(--muted-text);
+  }
+  .nearby-list li span:last-child { color: var(--warm-brown); font-weight: 700; }
+  .policies-box {
+    background: var(--sand);
+    border-radius: 2px;
+    padding: 2rem;
+  }
+  .policies-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--deep-brown);
+    margin-bottom: 1.2rem;
+  }
+  .policy-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(139,105,20,0.2);
+    font-size: 0.88rem;
+  }
+  .policy-row:last-child { border-bottom: none; }
+  .policy-row .label { color: var(--muted-text); }
+  .policy-row .value { font-weight: 700; color: var(--deep-brown); text-align: right; max-width: 55%; }
+
+  /* BOOKING CTA */
+  .booking-cta {
+    background:
+      linear-gradient(rgba(74,48,0,0.82), rgba(74,48,0,0.82)),
+      url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80') center/cover no-repeat;
+    text-align: center;
+    padding: 6rem 2rem;
+  }
+  .booking-cta .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #E8A94A;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .booking-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+  .booking-cta p {
+    color: #C4B090;
+    font-size: 0.95rem;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1E1200;
+    padding: 3rem 2rem 2rem;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--sand);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+  .footer-logo span { color: #E8A94A; }
+  footer p {
+    color: #7A6545;
+    font-size: 0.82rem;
+    line-height: 1.7;
+    margin-bottom: 0.3rem;
+  }
+  footer a { color: #B89050; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  .footer-divider { border: none; border-top: 1px solid #2C1F00; margin: 1.5rem auto; max-width: 300px; }
+
+  @media (max-width: 700px) {
+    nav { padding: 1rem 1.2rem; }
+    .strip { gap: 1.2rem; }
+    .about, .location { grid-template-columns: 1fr; gap: 2rem; }
+    .about-img::before { display: none; }
+    .hero h1 { font-size: 2.2rem; }
+    .booking-cta h2 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><span>JP</span> Comforts Hotel</div>
+  <a class="nav-cta" href="https://www.booking.com/hotel/ke/jp-comforts.html" target="_blank" rel="noopener">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">Welcome to</p>
+  <h1><em>JP Comforts</em> Hotel</h1>
+  <p class="hero-sub">4-Star Comfort in the Heart of Nairobi</p>
+  <div class="hero-location">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Westlands, Nairobi, Kenya
+  </div>
+  <div class="hero-btns">
+    <a class="btn-primary" href="https://www.booking.com/hotel/ke/jp-comforts.html" target="_blank" rel="noopener">Check Availability</a>
+    <a class="btn-outline" href="#about">Explore Hotel</a>
+  </div>
+</section>
+
+<!-- QUICK STRIP -->
+<div class="strip">
+  <div class="strip-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1"/></svg>
+    Free WiFi
+  </div>
+  <div class="strip-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+    Free Parking
+  </div>
+  <div class="strip-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    24-Hr Front Desk
+  </div>
+  <div class="strip-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    Free Airport Shuttle
+  </div>
+  <div class="strip-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Spa & Wellness
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-img">
+    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80" alt="JP Comforts Hotel room" />
+  </div>
+  <div class="about-text">
+    <p class="eyebrow">4-Star Hotel · Nairobi</p>
+    <div class="star-row">
+      <span>★</span><span>★</span><span>★</span><span>★</span>
+    </div>
+    <h2>Comfort You Can Count On</h2>
+    <p>JP Comforts Hotel offers thoughtfully appointed rooms with private bathrooms, work desks, flat-screen TVs, and complimentary WiFi — everything you need for a relaxing or productive stay in Nairobi.</p>
+    <p>Unwind at our spa and wellness centre, dine at the on-site restaurant, or enjoy a drink at the bar. With free private parking, a waterpark, and 24-hour room service, every detail is taken care of.</p>
+    <a class="btn-primary" href="https://www.booking.com/hotel/ke/jp-comforts.html" target="_blank" rel="noopener" style="display:inline-block; margin-top:0.5rem;">View Rooms &amp; Rates</a>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section class="amenities">
+  <p class="eyebrow">What We Offer</p>
+  <h2>Hotel Amenities</h2>
+  <div class="amenities-grid">
+    <div class="amenity-card"><div class="amenity-icon">🛁</div><p>Private Bathroom</p></div>
+    <div class="amenity-card"><div class="amenity-icon">📶</div><p>Free WiFi</p></div>
+    <div class="amenity-card"><div class="amenity-icon">🚗</div><p>Free Parking</p></div>
+    <div class="amenity-card"><div class="amenity-icon">✈️</div><p>Airport Shuttle</p></div>
+    <div class="amenity-card"><div class="amenity-icon">💆</div><p>Spa & Wellness</p></div>
+    <div class="amenity-card"><div class="amenity-icon">🍽️</div><p>Restaurant</p></div>
+    <div class="amenity-card"><div class="amenity-icon">🍹</div><p>Bar</p></div>
+    <div class="amenity-card"><div class="amenity-icon">🌊</div><p>Water Park</p></div>
+    <div class="amenity-card"><div class="amenity-icon">🛎️</div><p>Room Service</p></div>
+    <div class="amenity-card"><div class="amenity-icon">📺</div><p>Flat-screen TV</p></div>
+    <div class="amenity-card"><div class="amenity-icon">🚭</div><p>Non-smoking</p></div>
+    <div class="amenity-card"><div class="amenity-icon">🕐</div><p>24-hr Reception</p></div>
+  </div>
+</section>
+
+<!-- LOCATION + POLICIES -->
+<section class="location">
+  <div>
+    <p class="eyebrow">Getting Here</p>
+    <h2>Prime Nairobi Location</h2>
+    <ul class="nearby-list">
+      <li><span>Nairobi National Museum</span><span>1.1 mi</span></li>
+      <li><span>Nairobi Botanic Garden</span><span>Nearby</span></li>
+      <li><span>Nairobi Arboretum</span><span>Nearby</span></li>
+      <li><span>Museum Hill Center</span><span>Nearby</span></li>
+      <li><span>Eden Square Office Block</span><span>Nearby</span></li>
+      <li><span>Wilson Airport</span><span>5 mi</span></li>
+    </ul>
+    <p style="margin-top:1.2rem; font-size:0.82rem; color:#9A7A52;">
+      Westlands Close, JP Comforts Hotel Building, 00100 Nairobi, Kenya.<br/>Full address provided in booking confirmation.
+    </p>
+  </div>
+  <div class="policies-box">
+    <h3>Hotel Policies</h3>
+    <div class="policy-row"><span class="label">Check-in</span><span class="value">Available 24 hours</span></div>
+    <div class="policy-row"><span class="label">Check-out</span><span class="value">12:00 AM – 10:00 AM</span></div>
+    <div class="policy-row"><span class="label">Children</span><span class="value">All ages welcome · 6+ charged as adults</span></div>
+    <div class="policy-row"><span class="label">Cribs / Extra beds</span><span class="value">Not available</span></div>
+    <div class="policy-row"><span class="label">Pets</span><span class="value">Not allowed</span></div>
+    <div class="policy-row"><span class="label">Parties / Events</span><span class="value">Not allowed</span></div>
+    <div class="policy-row"><span class="label">Age restriction</span><span class="value">None</span></div>
+    <div class="policy-row"><span class="label">Languages</span><span class="value">English, French</span></div>
+  </div>
+</section>
+
+<!-- BOOKING CTA -->
+<section class="booking-cta">
+  <p class="eyebrow">Ready to Stay?</p>
+  <h2>Book Your Room Today</h2>
+  <p>Secure your stay at JP Comforts Hotel through Booking.com. Full property details, telephone, and address are provided in your booking confirmation.</p>
+  <a class="btn-primary" href="https://www.booking.com/hotel/ke/jp-comforts.html" target="_blank" rel="noopener" style="font-size:1rem; padding:1.1rem 2.8rem;">Reserve on Booking.com</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo"><span>JP</span> Comforts Hotel</p>
+  <p>Westlands, Nairobi, Kenya · 00100</p>
+  <p>Contact details provided upon booking confirmation</p>
+  <hr class="footer-divider"/>
+  <p>Book via <a href="https://www.booking.com/hotel/ke/jp-comforts.html" target="_blank" rel="noopener">Booking.com</a></p>
+  <p style="margin-top:1rem; font-size:0.75rem; color:#4A3820;">© 2026 JP Comforts Hotel. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
