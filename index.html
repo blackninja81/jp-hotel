@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JP Hotels | 4-Star Excellence in Westlands, Nairobi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A050;
+      --white: #FDFAF4;
+      --dark: #1C1408;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--dark);
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    /* Branding Overlay */
+    .brand-logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .brand-logo h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    }
+
+    .brand-logo p {
+      font-size: 0.9rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* Split Sections */
+    .hotel-option {
+      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: 10vh;
+      text-decoration: none;
+      transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      overflow: hidden;
+    }
+
+    .hotel-option:hover {
+      flex: 1.4;
+    }
+
+    .hotel-option img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      filter: brightness(0.5) grayscale(0.3);
+      transition: transform 0.8s ease, filter 0.6s ease;
+    }
+
+    .hotel-option:hover img {
+      transform: scale(1.05);
+      filter: brightness(0.7) grayscale(0);
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 80%;
+    }
+
+    .content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+    }
+
+    .content .tagline {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      display: block;
+      color: var(--gold);
+    }
+
+    .btn {
+      padding: 1rem 2.5rem;
+      border: 1px solid var(--gold);
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.8rem;
+      background: rgba(0,0,0,0.2);
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+    }
+
+    .hotel-option:hover .btn {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    @media (max-width: 768px) {
+      .container { flex-direction: column; }
+      .brand-logo { top: 10%; transform: translate(-50%, 0); }
+      .hotel-option { height: 50vh; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="brand-logo">
+    <p>Collection</p>
+    <h1>JP Hotels</h1>
+  </div>
+
+  <div class="container">
+    <a href="jp-comfort/index.html" class="hotel-option">
+      <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80" alt="JP Comforts">
+      <div class="content">
+        <h2>JP Comforts</h2>
+        <span class="tagline">Spa & Wellness Focus</span>
+        <div class="btn">Explore Hotel</div>
+      </div>
+    </a>
+
+    <a href="jp-suites/index.html" class="hotel-option">
+      <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=1200&q=80" alt="JP Suites">
+      <div class="content">
+        <h2>JP Suites</h2>
+        <span class="tagline">Family & Executive Suites</span>
+        <div class="btn">Explore Hotel</div>
+      </div>
+    </a>
+  </div>
+
+</body>
+</html>
